@@ -1,8 +1,8 @@
-from abc import abc, abstractmethod
+from abc import ABC, abstractmethod
 
 from typing import Any
 
-class Scheduler(abc.ABC):
+class Scheduler(ABC):
     """
     Abstract base class for all quantum task schedulers.
     Every scheduler must implement the `schedule` method.

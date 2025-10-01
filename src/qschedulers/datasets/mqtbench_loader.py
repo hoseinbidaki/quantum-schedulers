@@ -5,7 +5,7 @@ Utility functions to fetch benchmark quantum circuits from MQTBench.
 """
 
 from typing import Any
-from mqt.bench import get_benchmark
+from mqt.bench import get_benchmark, BenchmarkLevel
 
 
 def load_mqtbench_circuits(benchmarks: list[dict[str, Any]]) -> list[Any]:
@@ -31,7 +31,7 @@ def load_mqtbench_circuits(benchmarks: list[dict[str, Any]]) -> list[Any]:
         name = b["name"]
         nq = b["qubits"]
         try:
-            qc = get_benchmark(name, n_qubits=nq)
+            qc = get_benchmark(benchmark=name, level=BenchmarkLevel.ALG, circuit_size=nq)
             circuits.append(qc)
         except Exception as e:
             print(f"[WARN] Failed to load {name}-{nq}: {e}")

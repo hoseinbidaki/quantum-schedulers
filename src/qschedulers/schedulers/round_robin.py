@@ -24,7 +24,7 @@ class RoundRobinScheduler(Scheduler):
             backend_index = self._counter % backend_count
             backend = backends[backend_index]
 
-            assignments.append((task_id, task))
+            assignments.append((task_id, backend))
 
             self._counter += 1
 

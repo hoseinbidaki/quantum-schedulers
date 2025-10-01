@@ -6,4 +6,10 @@ authors = [
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "mqt-bench>=2.0.1",
+    "pandas>=2.3.3",
+    "qiskit>=2.2.1",
+    "qiskit-aer>=0.17.2",
+    "qiskit-ibm-runtime>=0.42.0",
+]
