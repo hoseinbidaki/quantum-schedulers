@@ -8,6 +8,70 @@ It provides:
 * 📊 **Evaluation tools** to estimate fidelity, execution time, and resource usage of scheduled circuits.
 * 📂 **CSV output** for easy integration into ML workflows or analysis.
 
+Perfect ✅ Let’s add a **“Getting Started with uv”** section for your README so that anyone cloning your repo knows how to set it up and run it.
+
+---
+
+## 📖 Running the Project with `uv`
+
+This project uses [`uv`](https://github.com/astral-sh/uv) for fast, modern Python package management.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/quantum-schedulers.git
+cd quantum-schedulers
+```
+
+### 2. Create a virtual environment
+
+```bash
+uv venv
+```
+
+This will create a `.venv` folder inside the project.
+Activate it:
+
+* **Linux/macOS**
+
+  ```bash
+  source .venv/bin/activate
+  ```
+* **Windows (PowerShell)**
+
+  ```powershell
+  .venv\Scripts\Activate.ps1
+  ```
+
+### 3. Install dependencies
+
+```bash
+uv sync
+```
+
+This reads the `pyproject.toml` and installs all required dependencies (Qiskit, MQTBench, pandas, etc.).
+
+### 4. Run an example
+
+```bash
+uv run python src/sample.py
+```
+
+Or open one of the example notebooks under `examples/` in Jupyter.
+
+### 5. Add new dependencies (optional)
+
+If you need more packages, you can add them with:
+
+```bash
+uv add <package-name>
+```
+
+This updates both `pyproject.toml` and the lockfile.
+
+---
+
+
 ### ✨ Example workflow
 
 ```python
