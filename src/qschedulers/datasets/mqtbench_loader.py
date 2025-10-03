@@ -37,11 +37,11 @@ def load_mqtbench_circuits(benchmarks: list[dict[str, Any]]) -> list[Any]:
             print(f"[WARN] Failed to load {name}-{nq}: {e}")
     return circuits
 
-
 # Example preset collections of benchmarks
 PRESET_SMALL = [
-    {"name": "qft", "qubits": 3},
     {"name": "ghz", "qubits": 5},
+    {"name": "qft", "qubits": 128},
+    {"name": "qft", "qubits": 3},
     {"name": "grover", "qubits": 3},
 ]
 
