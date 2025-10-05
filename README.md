@@ -7,6 +7,7 @@ It provides:
 * ⚡ **Pluggable schedulers** — start with a simple **Round-Robin scheduler**, and extend with greedy, RL-based, or custom algorithms.
 * 📊 **Evaluation tools** to estimate fidelity, execution time, and resource usage of scheduled circuits.
 * 📂 **CSV output** for easy integration into ML workflows or analysis.
+* ☁️ **Cloud orchestration module** — the new `cloud` module (`src/qschedulers/cloud`) provides tools for simulating and managing quantum tasks in cloud environments, including orchestrators, environments, quantum nodes, and tasks.
 
 Perfect ✅ Let’s add a **“Getting Started with uv”** section for your README so that anyone cloning your repo knows how to set it up and run it.
 
@@ -54,20 +55,10 @@ This reads the `pyproject.toml` and installs all required dependencies (Qiskit, 
 ### 4. Run an example
 
 ```bash
-uv run python src/sample.py
+uv run python -m qschedulers.examples.sample_cloud
 ```
 
 Or open one of the example notebooks under `examples/` in Jupyter.
-
-### 5. Add new dependencies (optional)
-
-If you need more packages, you can add them with:
-
-```bash
-uv add <package-name>
-```
-
-This updates both `pyproject.toml` and the lockfile.
 
 ---
 
