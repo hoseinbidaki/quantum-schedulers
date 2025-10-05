@@ -1,0 +1,3 @@
+[submodule "external/qsimpy"]
+	path = external/qsimpy
+	url = https://github.com/qachub/qsimpy
