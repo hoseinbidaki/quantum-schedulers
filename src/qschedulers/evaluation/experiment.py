@@ -6,8 +6,8 @@ Runs a scheduler on circuits + backends and outputs CSV with results.
 
 import pandas as pd
 from qiskit import transpile
-from qschedulers.datasets.calibration_utils import get_gate_error_map
-from qschedulers.evaluation.metrics import estimate_fidelity_and_time
+from src.qschedulers.datasets.calibration_utils import get_gate_error_map
+from src.qschedulers.evaluation.metrics import estimate_fidelity_and_time
 
 
 def run_experiment(scheduler, circuits, backends, shots=1024, csv_path="results.csv"):
