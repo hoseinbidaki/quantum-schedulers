@@ -12,5 +12,5 @@ dependencies = [
     "qiskit>=2.2.1",
     "qiskit-aer>=0.17.2",
     "qiskit-ibm-runtime>=0.42.0",
-    "qsimpy>=0.1",
+    "simpy>=4.1.1",
 ]
