@@ -1,11 +1,10 @@
-import qsimpy.core as sp
-
+# from external.qsimpy.qsimpy import QNode
+import simpy as sp
 
 class QuantumNode(sp.Resource):
-    def __init__(self, env, backend, name=None):
-        super().__init__(env, capacity=1, name=name or backend.name)
+    """
+    Wraps a quantum backend as a qsimpy Resource (with a queue).
+    """
+    def __init__(self, env: sp.Environment, backend, name=None):
+        super().__init__(env, capacity=1)
         self.backend = backend
-        self.queue = []
-
-    def __str__(self):
-        return f"QuantumNode({self.name}, backend={self.backend.name})"
