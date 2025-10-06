@@ -55,7 +55,7 @@ This reads the `pyproject.toml` and installs all required dependencies (Qiskit, 
 ### 4. Run an example
 
 ```bash
-uv run python -m qschedulers.examples.sample_cloud
+uv run python -m src.qschedulers.examples.sample_cloud
 ```
 
 Or open one of the example notebooks under `examples/` in Jupyter.
