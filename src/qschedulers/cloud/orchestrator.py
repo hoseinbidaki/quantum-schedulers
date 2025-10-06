@@ -7,11 +7,11 @@ Coordinates tasks, schedulers, and quantum nodes inside a qsimpy environment.
 import simpy.core as sp
 from qiskit import transpile
 
-from qschedulers.cloud.qtask import QuantumTask
-from qschedulers.cloud.qnode import QuantumNode
-from qschedulers.schedulers.base import Scheduler
-from qschedulers.datasets.calibration_utils import get_gate_error_map
-from qschedulers.evaluation.metrics import estimate_fidelity_and_time
+from src.qschedulers.cloud.qtask import QuantumTask
+from src.qschedulers.cloud.qnode import QuantumNode
+from src.qschedulers.schedulers.base import Scheduler
+from src.qschedulers.datasets.calibration_utils import get_gate_error_map
+from src.qschedulers.evaluation.metrics import estimate_fidelity_and_time
 
 
 class Orchestrator:
