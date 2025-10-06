@@ -13,16 +13,16 @@ class RoundRobinScheduler(Scheduler):
         self._counter = 0  # keeps track of the next backend index
 
 
-    def schedule(self, tasks: list[Any], backends: list[Any]) -> dict[str, Any]:
-        if not backends:
+    def schedule(self, tasks: list[Any], qnodes: list[Any]) -> dict[str, Any]:
+        if not qnodes:
             raise ValueError("No backends provided for scheduling.")
 
         assignments = []
-        backend_count = len(backends)
+        backend_count = len(qnodes)
 
         for task_id, task in enumerate(tasks):
             backend_index = self._counter % backend_count
-            backend = backends[backend_index]
+            backend = qnodes[backend_index]
 
             assignments.append((task_id, backend))
 

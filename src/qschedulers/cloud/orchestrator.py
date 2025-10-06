@@ -40,6 +40,25 @@ class Orchestrator:
         yield self.env.timeout(task.arrival_time)
         arrival = self.env.now
 
+        if not qnode:
+            self.results.append(
+                {
+                    "task_id": task.id,
+                    "backend": "",
+                    "status": "failed",
+                    "message": "error_message",
+                    "arrival_time": arrival,
+                    "start_time": -1,
+                    "finish_time": -1,
+                    "waiting_time": -1,
+                    "turnaround_time": -1,
+                    "fidelity": -1,
+                    "exec_time_est": -1,
+                    "swap_count": -1,
+                }
+            )
+            return None
+
         with qnode.request() as req:
             yield req
             start = self.env.now

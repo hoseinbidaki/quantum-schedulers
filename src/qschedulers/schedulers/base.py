@@ -9,13 +9,13 @@ class Scheduler(ABC):
     """
 
     @abstractmethod
-    def schedule(self, tasks: list[Any], backends: list[Any]) -> dict[str, Any]:
+    def schedule(self, tasks: list[Any], qnodes: list[Any]) -> dict[str, Any]:
         """
         Schedule a list of tasks onto available backends.
 
         Args:
             tasks: A list of quantum tasks (e.g., circuits).
-            backends: A list of quantum backends/devices (real or simulated).
+            qnodes: A list of quantum backends/devices (real or simulated).
 
         Returns:
             A dictionary mapping:
