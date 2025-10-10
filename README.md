@@ -9,7 +9,6 @@ It provides:
 * 📂 **CSV output** for easy integration into ML workflows or analysis.
 * ☁️ **Cloud orchestration module** — the new `cloud` module (`src/qschedulers/cloud`) provides tools for simulating and managing quantum tasks in cloud environments, including orchestrators, environments, quantum nodes, and tasks.
 
-Perfect ✅ Let’s add a **“Getting Started with uv”** section for your README so that anyone cloning your repo knows how to set it up and run it.
 
 ---
 
