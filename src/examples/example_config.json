@@ -1,0 +1,25 @@
+{
+    "example_type": "round_robin",
+    "preset": "PRESET_SMALL",
+    "csv_path": "results.csv",
+    "tasks": [
+        {
+            "id": 0,
+            "circuit": {
+                "name": "ghz",
+                "level": "ALG",
+                "circuit_size": 5
+            },
+            "arrival_time": 0
+        },
+        {
+            "id": 1,
+            "circuit": {
+                "name": "qft",
+                "level": "ALG",
+                "circuit_size": 10
+            },
+            "arrival_time": 1
+        }
+    ]
+}
