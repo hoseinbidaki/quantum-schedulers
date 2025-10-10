@@ -5,23 +5,23 @@ Functions to estimate fidelity, execution time, and swaps for transpiled circuit
 """
 
 from typing import Any, Tuple
+import logging
+from src.logger_config import setup_logger
 from qiskit.converters import circuit_to_dag
 from qiskit.dagcircuit import DAGOpNode
 
+logger = setup_logger()
 
-def estimate_fidelity_and_time(transpiled_qc: Any, backend: Any, err_map: dict, shots: int = 1024) -> Tuple[float, float, int]:
+
+def estimate_fidelity_and_time(
+    transpiled_qc: Any, backend: Any, err_map: dict, shots: int = 1024
+) -> Tuple[float, float, int]:
     """
     Estimate fidelity and execution time for a transpiled circuit.
-
-    Args:
-        transpiled_qc: The transpiled QuantumCircuit.
-        backend: Qiskit backend.
-        err_map: dict from calibration_utils.get_gate_error_map.
-        shots: number of repetitions.
-
-    Returns:
-        (fidelity, exec_time, swap_count)
     """
+    logger.debug(
+        f"Estimating fidelity and time for circuit on backend {getattr(backend, 'name', backend)} with {shots} shots."
+    )
     dag = circuit_to_dag(transpiled_qc)
     nodes = list(dag.topological_nodes())
 
@@ -30,7 +30,7 @@ def estimate_fidelity_and_time(transpiled_qc: Any, backend: Any, err_map: dict, 
     for n in nodes:
         if isinstance(n, DAGOpNode):
             opname = n.op.name
-            qargs = tuple(q._index for q in n.qargs)  # Qiskit 2.x
+            qargs = tuple(q._index for q in n.qargs)
             length = _lookup_length(err_map, opname, qargs)
             if length is None:
                 length = 300e-9 if opname.lower() in ("cx", "cnot", "cz") else 50e-9
@@ -60,8 +60,12 @@ def estimate_fidelity_and_time(transpiled_qc: Any, backend: Any, err_map: dict, 
             fidelity *= max(0.0, 1.0 - float(err))
 
     # SWAP count
-    swap_count = sum(1 for inst, _, _ in transpiled_qc.data if inst.name.lower() == "swap")
-
+    swap_count = sum(
+        1 for inst, _, _ in transpiled_qc.data if inst.name.lower() == "swap"
+    )
+    logger.debug(
+        f"Estimation complete: fidelity={fidelity}, exec_time={exec_time}, swap_count={swap_count}"
+    )
     return fidelity, exec_time, swap_count
 
 
