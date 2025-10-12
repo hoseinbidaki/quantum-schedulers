@@ -8,3 +8,4 @@ class QuantumNode(sp.Resource):
     def __init__(self, env: sp.Environment, backend, name=None):
         super().__init__(env, capacity=1)
         self.backend = backend
+        self.name = name

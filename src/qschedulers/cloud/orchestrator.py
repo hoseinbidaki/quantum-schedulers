@@ -5,6 +5,7 @@ Coordinates tasks, schedulers, and quantum nodes inside a qsimpy environment.
 """
 
 import simpy.core as sp
+import simpy
 from qiskit import transpile
 
 from src.qschedulers.cloud.qtask import QuantumTask
@@ -12,7 +13,9 @@ from src.qschedulers.cloud.qnode import QuantumNode
 from src.qschedulers.schedulers.base import Scheduler
 from src.qschedulers.datasets.calibration_utils import get_gate_error_map
 from src.qschedulers.evaluation.metrics import estimate_fidelity_and_time
+from src.logger_config import setup_logger
 
+logger = setup_logger()
 
 class Orchestrator:
     def __init__(
@@ -29,7 +32,10 @@ class Orchestrator:
         self.results = []
 
     def submit(self, tasks: list[QuantumTask]):
+        logger.info(f"Submitting {len(tasks)} tasks")
+        logger.info("Calling scheduler.schedule(...) now")
         result = self.scheduler.schedule(tasks, self.qnodes)
+        logger.info("scheduler.schedule returned")
         assignments = result["assignments"]
         for task_id, qnode in assignments:
             task = tasks[task_id]
@@ -58,7 +64,6 @@ class Orchestrator:
                 }
             )
             return None
-
         with qnode.request() as req:
             yield req
             start = self.env.now
